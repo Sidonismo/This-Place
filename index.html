@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>GPS průvodce</title>
+  <link rel="stylesheet" href="assets/styles/app.css" />
+
+  <script src="assets/scripts/objects.js" defer></script>
+  <script src="assets/scripts/getGps.js" defer></script>
+  <script src="assets/scripts/dependSelect.js" defer></script>
+
+
+</head>
+
+<body>
+  <section id="user-input" class="card">
+
+      <h1 id="titulek">Databáze míst v ČR</h1>
+    </div>
+    <p id="demo" style="color: brown;"></p>
+  </section>
+  <section id="user-input" class="card" class="select2 form-control">
+    <div class="control">
+      <label for="misto">Název nového místa</label>
+      
+      <input type="text" id="misto" />
+
+      <label for="vyber-typu-mista">Typ místa:</label>
+      <select id="vyber-typu-mista" class="select2 form-control">
+        <option value="">Typ místa</option>
+      </select>
+
+      <label for="kratky-popis-mista">Stručný popis</label>
+      <select id="vyber-strucny-popis">
+      </select>
+      <div class="control">
+      <label for="popis">Popis místa ( volitelné )</label>
+      <textarea id="popis" name="popis"></textarea>
+    </div>
+    <button id="pridej-misto-btn">Přidej</button>
+  </section>
+  <section id="filter" class="card">
+    <label for="filter-title">Filtruj dle názvu místa</label>
+    <input type="text" id="filter-title" />
+    <button id="hledej-btn">Filtruj</button>
+  </section>
+  <ul id="seznam-mist" class="card">
+    
+  </ul>
+</body>
+
+</html>
+</body>
+
+</html>
