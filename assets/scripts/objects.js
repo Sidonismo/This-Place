@@ -65,7 +65,7 @@ let getLastGps = () => {
   gpsMista = Object.values(gpsMista[2]);
   gpsMista = Object.values(gpsMista);
   console.log(gpsMista[0], gpsMista[1], gpsMista[2]);
-}else console.log('nic');
+}else console.log('Nemáte zadané místo.');
 }
 let y = document.getElementById("x");
 
