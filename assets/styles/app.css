@@ -9,7 +9,17 @@ html {
 body {
   margin: 0;
 }
-
+h1 {
+  font-weight: bold;
+  display: block;
+  color: #4442a1; 
+}
+h2 {
+  font-size: x-large;
+  font-weight: lighter;
+  display: ruby-base;
+  color: #494949; 
+}
 label {
   font-weight: bold;
   display: block;
