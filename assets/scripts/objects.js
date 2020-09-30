@@ -2,24 +2,23 @@ const pridejMistoBtn = document.getElementById("pridej-misto-btn");
 const hledejMistoBtn = document.getElementById("hledej-btn");
 var gpsMista = new Object();
 
-
 // Funkce, která vytáhne UL-LI seznam míst z pole misto[]
 const renderMista = () => {
-  const seznamMist = document.getElementById('seznam-mist');
+  const seznamMist = document.getElementById("seznam-mist");
 
   if (misto.length === 0) {
-    seznamMist.classList.remove('visible');
+    seznamMist.classList.remove("visible");
     return;
   } else {
-    seznamMist.classList.add('visible');
+    seznamMist.classList.add("visible");
   }
-  seznamMist.innerHTML = '';
+  seznamMist.innerHTML = "";
 
   misto.forEach((mista) => {
-    const liSeznamMist = document.createElement('li');
-    let text = mista.info.Místo + ' - ';
+    const liSeznamMist = document.createElement("li");
+    let text = mista.info.Místo + " - ";
     for (const key in mista.info) {
-      if (key !== 'Místo') {
+      if (key !== "Místo") {
         text = text + ` ${key}: ${mista.info[key]}`;
       }
     }
@@ -33,7 +32,6 @@ const pridejMistoOvladac = () => {
   const druhMista = document.getElementById("vyber-typu-mista").value;
   const nazevMista = document.getElementById("misto").value;
   getLocation();
-
 
   if (
     nazevMista.trim() === "" ||
@@ -51,7 +49,6 @@ const pridejMistoOvladac = () => {
     id: Math.random().toString(),
   };
 
-
   misto.push(noveMisto);
   console.log(misto);
   // nakonec  ovladač i funkci renderMista pro zobrazení v seznamu UL-LI
@@ -59,16 +56,20 @@ const pridejMistoOvladac = () => {
 };
 // funkce, která získává poslední souřadnice zadaného místa
 let getLastGps = () => {
-  if (misto[misto.length -1]){
-  gpsMista = misto[misto.length -1];
-  gpsMista = Object.values(gpsMista);
-  gpsMista = Object.values(gpsMista[2]);
-  gpsMista = Object.values(gpsMista);
-  console.log(gpsMista[0], gpsMista[1], gpsMista[2]);
-}else console.log('Nemáte zadané místo.');
-}
+  if (misto[misto.length - 1]) {
+    gpsMista = misto[misto.length - 1];
+    gpsMista = Object.values(gpsMista);
+    if (gpsMista[2]) {
+      gpsMista = Object.values(gpsMista[2]);
+      gpsMista = Object.values(gpsMista);
+      console.log(gpsMista[0], gpsMista[1], gpsMista[2]);
+    } else {
+      console.log("Žádná gps");
+    }
+  } else console.log("Nemáte zadané místo.");
+};
 let y = document.getElementById("x");
 
 pridejMistoBtn.addEventListener("click", pridejMistoOvladac);
-hledejMistoBtn.addEventListener('click', getLastGps);
+hledejMistoBtn.addEventListener("click", getLastGps);
 console.log(misto);
