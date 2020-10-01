@@ -54,7 +54,6 @@ const pridejMistoOvladac = (filter='') => {
   console.log(misto);
   // nakonec  ovladač i funkci renderMista pro zobrazení v seznamu UL-LI
   renderMista();
-  ziskejMapu(gpsMista[1], gpsMista[0]);
 };
 //funkce zobrazující mapu
 let ziskejMapu = (longitude, latitude) => {
@@ -88,7 +87,7 @@ let getLastGps = () => {
       gpsMista = Object.values(gpsMista[2]);
       gpsMista = Object.values(gpsMista);
       console.log(gpsMista[0], gpsMista[1], gpsMista[2]);
-      ziskejMapu(gpsMista[0], gpsMista[1]);
+      ziskejMapu(gpsMista[1], gpsMista[0]);
       } else {
       console.log("Žádná gps");
     }
