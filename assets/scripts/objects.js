@@ -64,11 +64,7 @@ let getLastGps = () => {
       gpsMista = Object.values(gpsMista[2]);
       gpsMista = Object.values(gpsMista);
       console.log(gpsMista[0], gpsMista[1], gpsMista[2]);
-    } else {
-      console.log("Žádná gps");
-    }
-  } else console.log("Nemáte zadané místo.");
-    map = new OpenLayers.Map("mapdiv");
+      map = new OpenLayers.Map("mapdiv");
     map.addLayer(new OpenLayers.Layer.OSM());
 
     var lonLat = new OpenLayers.LonLat( gpsMista[1] ,gpsMista[0] )
@@ -85,6 +81,10 @@ let getLastGps = () => {
     markers.addMarker(new OpenLayers.Marker(lonLat));
     
     map.setCenter (lonLat, zoom);
+    } else {
+      console.log("Žádná gps");
+    }
+  } else console.log("Nemáte zadané místo.");
 };
 filterMista = () => {console.log('bla')}
 let y = document.getElementById("x");
