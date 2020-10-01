@@ -69,6 +69,7 @@ let getLastGps = () => {
     }
   } else console.log("Nemáte zadané místo.");
 };
+filterMista = () => {console.log('bla')}
 let y = document.getElementById("x");
 
 pridejMistoBtn.addEventListener("click", pridejMistoOvladac);

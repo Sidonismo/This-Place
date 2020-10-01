@@ -17,9 +17,9 @@
 
 <body>
   <section id="user-input" class="card">
-
-    <h1 id="titulek">Databáze míst v ČR</h1>
-    <h2 id="pod-titulek">GPS průvodce</h2>
+    <div class="control">
+      <h1 id="titulek">Databáze míst v ČR</h1>
+      <h2 id="pod-titulek">GPS průvodce</h2>
     </div>
     <p id="demo" style="color: brown;"></p>
   </section>
@@ -27,29 +27,33 @@
     <div class="control">
       <label for="misto">Název nového místa</label>
       <input type="text" id="misto" />
+    </div>
+    <label for="vyber-typu-mista">Typ místa:</label>
+    <select id="vyber-typu-mista" class="select2 form-control">
+      <option value="">Typ místa</option>
+    </select>
 
-      <label for="vyber-typu-mista">Typ místa:</label>
-      <select id="vyber-typu-mista" class="select2 form-control">
-        <option value="">Typ místa</option>
-      </select>
+    <label for="kratky-popis-mista">Stručný popis</label>
+    <select id="vyber-strucny-popis">
+    </select>
+    <div class="control">
+      <label for="popis">Popis místa ( volitelné )</label>
+      <textarea id="popis" name="popis"></textarea>
+    </div>
+    <button id="pridej-misto-btn">Přidej</button>
+  </section>
+  <section id="filter" class="card">
+    <div class="control">
+      <label for="latitude">Mapa místa</label>
+      
+      <div id="m" style="height:380px"></div>
+      <button id="reload-map-btn">Obnov mapu</button>
+    </div>
+  </section>
 
-      <label for="kratky-popis-mista">Stručný popis</label>
-      <select id="vyber-strucny-popis">
-      </select>
-      <div class="control">
-        <label for="popis">Popis místa ( volitelné )</label>
-        <textarea id="popis" name="popis"></textarea>
-      </div>
-      <button id="pridej-misto-btn">Přidej</button>
-  </section>
-  <section>
-    <button id="reload-map-btn">Obnov mapu</button>
-    <div id="m" style="height:380px"></div>
-  </section>
-    
   <section id="filter" class="card">
     <label for="filter-title">Filtruj dle názvu místa</label>
-    <input type="text" id="filter-title" />reload-map-btn
+    <input type="text" id="filter-title" />
     <button id="hledej-btn">Filtruj</button>
   </section>
   <ul id="seznam-mist" class="card">
