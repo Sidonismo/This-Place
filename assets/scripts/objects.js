@@ -1,5 +1,6 @@
 const pridejMistoBtn = document.getElementById("pridej-misto-btn");
 const hledejMistoBtn = document.getElementById("hledej-btn");
+const reloadMapBtn = document.getElementById("reload-map-btn");
 var gpsMista = new Object();
 
 // Funkce, která vytáhne UL-LI seznam míst z pole misto[]
@@ -27,7 +28,7 @@ const renderMista = () => {
   });
 };
 // Ovladač na button pridej-misto-btn, který vytváří objekt noveMisto a přidává ho do pole misto[]
-const pridejMistoOvladac = () => {
+const pridejMistoOvladac = (filter='') => {
   const popisMista = document.getElementById("vyber-strucny-popis").value;
   const druhMista = document.getElementById("vyber-typu-mista").value;
   const nazevMista = document.getElementById("misto").value;
@@ -71,5 +72,6 @@ let getLastGps = () => {
 let y = document.getElementById("x");
 
 pridejMistoBtn.addEventListener("click", pridejMistoOvladac);
-hledejMistoBtn.addEventListener("click", getLastGps);
+hledejMistoBtn.addEventListener("click", filterMista);
+reloadMapBtn.addEventListener("click", getLastGps);
 console.log(misto);
