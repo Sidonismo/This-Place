@@ -88,7 +88,7 @@ let getLastGps = () => {
       gpsMista = Object.values(gpsMista[2]);
       gpsMista = Object.values(gpsMista);
       console.log(gpsMista[0], gpsMista[1], gpsMista[2]);
-      ziskejMapu(gpsMista[1], gpsMista[0]);
+      ziskejMapu(gpsMista[0], gpsMista[1]);
       } else {
       console.log("Žádná gps");
     }
