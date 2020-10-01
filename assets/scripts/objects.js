@@ -54,6 +54,7 @@ const pridejMistoOvladac = (filter='') => {
   console.log(misto);
   // nakonec  ovladač i funkci renderMista pro zobrazení v seznamu UL-LI
   renderMista();
+  ziskejMapu(gpsMista[1], gpsMista[0]);
 };
 //funkce zobrazující mapu
 let ziskejMapu = (longitude, latitude) => {
