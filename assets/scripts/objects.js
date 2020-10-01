@@ -55,6 +55,29 @@ const pridejMistoOvladac = (filter='') => {
   // nakonec  ovladač i funkci renderMista pro zobrazení v seznamu UL-LI
   renderMista();
 };
+//funkce zobrazující mapu
+let ziskejMapu = (longitude, latitude) => {
+  const mapdiv = document.getElementById("mapdiv");
+  mapdiv.innerHTML = "";
+  map = new OpenLayers.Map("mapdiv");
+  map.addLayer(new OpenLayers.Layer.OSM());
+
+  var lonLat = new OpenLayers.LonLat( longitude ,latitude )
+        .transform(
+          new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+          map.getProjectionObject() // to Spherical Mercator Projection
+        );
+        
+  var zoom=16;
+
+  var markers = new OpenLayers.Layer.Markers( "Markers" );
+  map.addLayer(markers);
+  
+  markers.addMarker(new OpenLayers.Marker(lonLat));
+  
+  map.setCenter (lonLat, zoom);
+
+}
 // funkce, která získává poslední souřadnice zadaného místa
 let getLastGps = () => {
   if (misto[misto.length - 1]) {
@@ -64,24 +87,8 @@ let getLastGps = () => {
       gpsMista = Object.values(gpsMista[2]);
       gpsMista = Object.values(gpsMista);
       console.log(gpsMista[0], gpsMista[1], gpsMista[2]);
-      map = new OpenLayers.Map("mapdiv");
-    map.addLayer(new OpenLayers.Layer.OSM());
-
-    var lonLat = new OpenLayers.LonLat( gpsMista[1] ,gpsMista[0] )
-          .transform(
-            new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-            map.getProjectionObject() // to Spherical Mercator Projection
-          );
-          
-    var zoom=16;
-
-    var markers = new OpenLayers.Layer.Markers( "Markers" );
-    map.addLayer(markers);
-    
-    markers.addMarker(new OpenLayers.Marker(lonLat));
-    
-    map.setCenter (lonLat, zoom);
-    } else {
+      ziskejMapu(gpsMista[1], gpsMista[0]);
+      } else {
       console.log("Žádná gps");
     }
   } else console.log("Nemáte zadané místo.");
@@ -92,4 +99,8 @@ let y = document.getElementById("x");
 pridejMistoBtn.addEventListener("click", pridejMistoOvladac);
 hledejMistoBtn.addEventListener("click", filterMista);
 reloadMapBtn.addEventListener("click", getLastGps);
+window.addEventListener('load', () => {
+  console.log('page is fully loaded');
+  ziskejMapu(14.4174, 50.0888);
+});
 console.log(misto);
