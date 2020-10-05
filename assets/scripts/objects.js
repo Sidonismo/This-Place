@@ -57,26 +57,33 @@ const pridejMistoOvladac = (filter='') => {
 };
 //funkce zobrazující mapu
 let ziskejMapu = (longitude, latitude) => {
-  const mapdiv = document.getElementById("mapdiv");
-  mapdiv.innerHTML = "";
-  map = new OpenLayers.Map("mapdiv");
-  map.addLayer(new OpenLayers.Layer.OSM());
-
-  var lonLat = new OpenLayers.LonLat( longitude ,latitude )
-        .transform(
-          new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-          map.getProjectionObject() // to Spherical Mercator Projection
-        );
-        
-  var zoom=18;
-
-  var markers = new OpenLayers.Layer.Markers( "Markers" );
-  map.addLayer(markers);
-  
-  markers.addMarker(new OpenLayers.Marker(lonLat));
-  
-  map.setCenter (lonLat, zoom);
-
+  var map = '';
+  var thisPlace = '';
+  var map = L.map("map", {
+  center: [latitude, longitude],
+  zoom: 17,
+  layers: [
+    new L.TileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution:
+        'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+    }),
+  ],
+});
+var popup = L.popup();
+L.marker([latitude, longitude]).addTo(map)
+		.bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
+    function onMapClick(e) {
+      thisPlace = e.latlng;
+      popup
+          .setLatLng(e.latlng)
+          .setContent("You clicked the map at " + e.latlng.toString())
+          .openOn(map);
+  }
+  let place = () => {
+    console.log(thisPlace);
+  }
+  map.on('click', onMapClick);
+  window.addEventListener('click', place);
 }
 // funkce, která získává poslední souřadnice zadaného místa
 let getLastGps = () => {
@@ -87,7 +94,7 @@ let getLastGps = () => {
       gpsMista = Object.values(gpsMista[2]);
       gpsMista = Object.values(gpsMista);
       console.log(gpsMista[0], gpsMista[1], gpsMista[2]);
-      ziskejMapu(gpsMista[1], gpsMista[0]);
+      ziskejMapu(gpsMista[0], gpsMista[1]);
       } else {
       console.log("Žádná gps");
     }

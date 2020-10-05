@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cz">
 
 <head>
   <meta charset="UTF-8" />
@@ -11,7 +11,8 @@
   <script src="assets/scripts/objects.js" defer></script>
   <script src="assets/scripts/getGps.js" defer></script>
   <script src="assets/scripts/dependSelect.js" defer></script>
-  <script src="assets/scripts/openLayers.js"></script>
+  <script src="assets/scripts/leaflet.js"></script>
+  <link rel="stylesheet" href="assets/styles/leaflet.css"/>
 
 
 </head>
@@ -47,7 +48,7 @@
     <div class="control">
       <label for="m">Mapa místa</label>
       
-      <div id="mapdiv" class="smallmap olMap" style="height:380px"></div>
+      <div id="map" style="height:380px;"></div>
       <button id="reload-map-btn">Obnov mapu</button>
     </div>
   </section>
